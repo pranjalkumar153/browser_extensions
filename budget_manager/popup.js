@@ -12,14 +12,14 @@ $(function() {
             if (budget.total) {
                 newTotal += parseInt(budget.total);
             }
-            var amount = $("#amount").val();
+            var amount = parseInt($("#amount").val());
             if (amount) {
                 newTotal += parseInt(amount);
             }
             chrome.storage.sync.set({ "total": newTotal }, function() {
                 $("#total").text(newTotal);
                 $("#amount").val("");
-                if (amount && budget.limit >= newTotal) {
+                if (amount && parseInt(budget.limit) >= parseInt(newTotal)) {
                     var notifyObject = {
                         type: "basic",
                         title: "Limit Reached!!",
