@@ -26,7 +26,9 @@ $(function() {
                         message: "Seems like you have exceeded your limit!!",
                         iconUrl: "moneyicon.jpg"
                     }
-                    chrome.notifications.create("limit_reached", notifyObject);
+                    chrome.notifications.create("limit_reached", notifyObject, function() {
+                        console.log("Notified!!");
+                    });
                 }
 
             });
