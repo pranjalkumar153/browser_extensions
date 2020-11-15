@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "Budget Manager",
+    "version": "1.0",
+    "description": "Tracks overall spending",
+    "icons": {
+        "128": "moneyicon.jpg",
+        "48": "moneyicon.jpg",
+        "16": "moneyicon.jpg"
+    },
+    "browser_action": {
+        "default_icon": "monryicon.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "storage"
+    ]
+}
