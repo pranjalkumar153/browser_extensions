@@ -7,7 +7,7 @@ $(function() {
         }
     });
     $("#spentAmount").click(function() {
-        chrome.storage.sync.get("total", function(budget) {
+        chrome.storage.sync.get(["total", "limit"], function(budget) {
             var newTotal = 0;
             if (budget.total) {
                 newTotal += parseInt(budget.total);
@@ -16,9 +16,24 @@ $(function() {
             if (amount) {
                 newTotal += parseInt(amount);
             }
-            chrome.storage.sync.set({ "total": newTotal });
-            $("#total").text(newTotal);
-            $("#amount").val("");
+            chrome.storage.sync.set({ "total": newTotal }, function() {
+                $("#total").text(newTotal);
+                $("#amount").val("");
+                if (amount && budget.limit >= newTotal) {
+                    var notifyObject = {
+                        type: "basic",
+                        title: "Limit Reached!!",
+                        message: "Seems like you have exceeded your limit!!",
+                        iconUrl: "moneyicon.jpg"
+                    }
+                    chrome.notifications.create("limit_reached", notifyObject, functions() {
+                        console.log("Notified Successfully!!");
+                    });
+                }
+
+            });
+            // $("#total").text(newTotal);
+            // $("#amount").val("");
         });
     });
 });
