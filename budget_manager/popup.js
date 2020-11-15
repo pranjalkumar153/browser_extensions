@@ -19,7 +19,7 @@ $(function() {
             chrome.storage.sync.set({ "total": newTotal }, function() {
                 $("#total").text(newTotal);
                 $("#amount").val("");
-                if (amount && parseInt(budget.limit) >= parseInt(newTotal)) {
+                if (amount && parseInt(budget.limit) <= parseInt(newTotal)) {
                     var notifyObject = {
                         type: "basic",
                         title: "Limit Reached!!",
