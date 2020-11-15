@@ -6,6 +6,21 @@ $(function() {
             $("#total").text(totalAmountSpent);
         }
     });
+    chrome.storage.sync.get("limit", function(lim) {
+        if (lim.limit) {
+            var limit_val = parseInt(lim.limit);
+            $("#limit_disp").text(limit_val);
+        }
+    });
+    $("#set_limit").click(function() {
+        chrome.storage.sync.get("limit", function(lim) {
+            var limit_val = parseInt(lim.limit);
+            $("#limit_disp").text(limit_val);
+            chrome.storage.sync.set({ "limit": limit_val });
+            $("#limit_disp").text(limit_val);
+            $("#limit").val("");
+        })
+    });
     $("#spentAmount").click(function() {
         chrome.storage.sync.get("total", function(budget) {
             var newTotal = 0;
