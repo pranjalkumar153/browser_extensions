@@ -36,3 +36,7 @@ chrome.contextMenus.onClicked.addListener(function(clickData) {
         }
     }
 });
+
+chrome.storage.onChanged.addListener(function(change, storageName) {
+    chrome.browserAction.setBadgeText({ "text": change.limit.newValue.toString() });
+});
