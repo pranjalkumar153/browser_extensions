@@ -18,12 +18,14 @@
     },
 
     "content_scripts": [{
-        "matches": ["https://developers.chrome.com/*"],
-        "js": ["content.js", "jquery-3.5.1.min.js"]
+        "matches": ["https://developer.chrome.com/*", "https://www.facebook.com/*"],
+        "js": ["content.js", "jquery-3.5.1.min.js"],
+        "css": ["content.css"]
     }],
     "permissions": [
         "tabs",
-        "https://developers.chrome.com/*"
+        "https://developer.chrome.com/*",
+        "https://www.facebook.com/*"
     ]
 
 }
