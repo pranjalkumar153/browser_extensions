@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Page Font Style",
+    "version": "1.0",
+    "description": "To alter the fonts of a page",
+    "icons": {
+        "128": "icon.png",
+        "48": "icon.png",
+        "16": "icon.png"
+    },
+    "page_action": {
+        "default_popup": "popup.html",
+        "default_icon": "icon.png"
+    }
+}
